@@ -1,17 +1,23 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link rel="icon" type="image/svg+xml" href="/github/frontend/public/img/logo.svg" />
-  <meta content="yes" name="apple-mobile-web-app-capable" />
-  <link rel="apple-touch-icon" href="/github/frontend/public/img/pwa/logo-192.png">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" href="./img/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./img/pwa/logo-192.png">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <link rel="mask-icon" href="./img/logo.svg" color="#FFFFFF">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="theme-color" content="#ffffff">
   <meta name="referrer" content="origin-when-cross-origin" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   <title>BingAI - 聊天</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
+  <script>
+    var vConsole = new window.VConsole();
+  </script> -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MM5J5X8QQC"></script>
   <script>
@@ -31,57 +37,79 @@
       s.parentNode.insertBefore(hm, s);
     })();
   </script>
-</head>
+  <script src="/web/js/bing/chat/global.js"></script>
+  <script src="/web/js/bing/chat/amd.js"></script>
+  <script src="/web/js/bing/chat/config.js"></script>
+  <script type="module" crossorigin src="/web/assets/index-63d32cbb.js"></script>
+  <link rel="stylesheet" href="/web/assets/index-29dab197.css">
+<link rel="manifest" href="/web/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/web/registerSW.js"></script></head>
 
 <body>
-  <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 px-4 sm:py-12">
-    <div class="absolute inset-0 bg-slate-100 bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]">
-    </div>
-    <div
-      class="relative bg-white px-6 pb-8 pt-10 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 lg:max-w-3xl">
-      <div class="mx-auto max-w-3xl">
-        <div class="flex justify-center">
-          <img src="/github/frontend/public/img/logo.svg" class="h-24" alt="BingAI" />
-        </div>
-        <div class="mt-6 text-center text-3xl text-gray-600">聊天服务器已部署完成</div>
-        <div class="divide-y divide-gray-300/50">
-          <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-            <ul class="space-y-4">
-              <li class="flex items-center">
-                <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="11" />
-                  <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-                </svg>
-                <p class="ml-4">
-                  在基于 go-proxy-bingai 搭建的站点中
-                  <code class="text-sm font-bold text-sky-500">设置 => 服务选择</code>
-                  添加此站点即可
-                </p>
-              </li>
-              <li class="flex items-center">
-                <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="11" />
-                  <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
-                </svg>
-                <p class="ml-4">
-                  如有疑问，请参考
-                  <a href="https://github.com/adams549659584/go-proxy-bingai/issues/81" target="_blank"
-                    class="text-sky-500 hover:text-sky-600">issues #81</a>
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div class="pt-8 text-base font-semibold leading-7">
-            <p class="text-gray-600 overflow-hidden">开源地址：<a href="https://github.com/adams549659584/go-proxy-bingai"
-                target="_blank"
-                class="text-sky-500 hover:text-sky-600">https://github.com/adams549659584/go-proxy-bingai</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div id="b_sydHeadBg"></div>
+  <div id="b_sydConvCont" _iid="SERP.5029">
+    <div id="b_sydtoporpole" class="b_sydConvAnsTest"></div>
+    <div id="b_sydBgCover"></div>
   </div>
+  <script src="/web/js/bing/chat/core.js"></script>
+  <script src="/web/js/bing/chat/lib.js"></script>
+  <div id="app">
+    <style>
+      /* loading start */
+      .loading-spinner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        opacity: 1;
+        transition: opacity 2s ease-out;
+      }
+
+      .loading-spinner.hidden {
+        opacity: 0;
+      }
+
+      .loading-spinner>div {
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(90deg, #2870EA 10.79%, #1B4AEF 87.08%);
+
+        border-radius: 100%;
+        display: inline-block;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+
+      .loading-spinner .bounce1 {
+        animation-delay: -0.32s;
+      }
+
+      .loading-spinner .bounce2 {
+        animation-delay: -0.16s;
+      }
+
+      @keyframes sk-bouncedelay {
+
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+
+        40% {
+          transform: scale(1.0);
+        }
+      }
+
+      /* loading end */
+    </style>
+    <!-- loading start -->
+    <div class="loading-spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+    <!-- loading end -->
+  </div>
+  
 </body>
 
 </html>
